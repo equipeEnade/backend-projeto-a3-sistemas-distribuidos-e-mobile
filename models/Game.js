@@ -5,10 +5,12 @@ const gameSchema = new mongoose.Schema({
     price: Number,
     description: String,
     imageURL: String,
-    genre: String,
+    genre: [String],
     releaseDate: Date,
     developer: String,
-    platform: [String]
+    platform: [String],
+    status: String,
+    rate: Number
 })
 
 const Game = mongoose.model('Game', gameSchema)
