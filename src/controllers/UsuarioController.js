@@ -63,4 +63,19 @@ router.get('/:id', async (req, res) => {
     }
 });
 
+router.post('/login', async (req, res) => {
+    const login = req.body;
+    try {
+        const response = await usuarioService.login(login);
+        if(response != false){
+            res.status(201).json( {
+                mensagem: "Login bem sucedido",
+                id: response
+            } );
+        }else res.status(401).json( {error: "Usuario não encontrado"} );
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
 module.exports = router;
