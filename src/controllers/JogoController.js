@@ -27,6 +27,20 @@ router.get('/:id', async (req, res) => {
     }
 });
 
+router.delete('/:id', async (req, res) => {
+    const id = req.params.id;
+    try {
+        const deleted = await jogoService.deletarJogo(id);
+        if (deleted) {
+            res.json({ message: 'Jogo deletado com sucesso' });
+        } else {
+            res.status(404).json({ message: 'Jogo não encontrado' });
+        }
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
 router.get('/plataformas/:plataformas', async (req, res) => {
     try {
         const plataformas = req.params.plataformas;

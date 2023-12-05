@@ -53,7 +53,7 @@ class UsuarioRepository {
       return null;
     }
     const usuario = rows[0];
-    return new Usuario(usuario.id, usuario.nome, usuario.email, usuario.role);
+    return new Usuario(usuario.id, usuario.nome, usuario.email, null ,usuario.role);
   }
 }
 

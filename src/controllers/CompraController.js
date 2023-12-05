@@ -65,7 +65,6 @@ router.get('/:id', async (req, res) => {
 
 router.get('/usuario/:id', async (req, res) => {
     const id_usuario = req.params.id;
-    console.log(id_usuario);
     try {
         const compra = await compraService.findComprasByUsuarioId(id_usuario);
         if (compra) {

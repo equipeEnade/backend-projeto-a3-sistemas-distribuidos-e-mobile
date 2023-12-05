@@ -50,6 +50,10 @@ class JogoRepository {
       throw new Error(`Erro ao buscar jogo por ID: ${error.message}`);
     }
   }
+  async deletarJogo(id) {
+    const result = await pool.query("DELETE FROM jogos WHERE id = $1", [id]);
+    return result.rowCount > 0;
+  }
 
   async postNewComentario(jogoId, comentario) {
     try {

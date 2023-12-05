@@ -20,6 +20,9 @@ class JogoService {
             throw new Error(`Erro ao buscar jogo por ID: ${error.message}`);
         }
     }
+    async deletarJogo(id) {
+        return await this.jogoRepository.deletarJogo(id);
+    }
 
     async getJogosByPlataformas(plataformas) {
         try {
