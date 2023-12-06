@@ -76,6 +76,16 @@ router.post('/comentar/:jogoId', async (req, res) => {
     }
 });
 
+router.put('/', async (req, res) => {
+    try {
+        const novoJogo = req.body;
+        const jogo = await jogoService.put(novoJogo);
+        res.json(jogo);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
 router.post('/votar/:jogoId/:nota', async (req, res) => {
     try {
         const jogoId = req.params.jogoId;

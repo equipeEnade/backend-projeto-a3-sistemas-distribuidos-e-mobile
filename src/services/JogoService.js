@@ -13,6 +13,10 @@ class JogoService {
         }
     }
 
+    async put(jogo) {
+        return await this.jogoRepository.editarJogo(jogo);
+    }
+
     async getJogoById(id) {
         try {
             return await this.jogoRepository.getJogoById(id);

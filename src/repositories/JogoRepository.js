@@ -55,6 +55,27 @@ class JogoRepository {
     return result.rowCount > 0;
   }
 
+  async editarJogo(jogo) {
+    const { id, titulo, descricao, preco, estoque, plataformas, nota, categorias, comentarios, urlImagem } = jogo;
+    const result = await pool.query(
+      "UPDATE jogos SET titulo = $1, descricao = $2, preco = $3, estoque = $4, plataformas = $5, nota = $6, categorias = $7, comentarios = $8, urlimagem = $9 WHERE id = $10 RETURNING *",
+      [titulo, descricao, preco, estoque, plataformas, nota, categorias, comentarios, urlImagem, id]
+    );
+    return new Jogo(
+      result.rows[0].id,
+      result.rows[0].titulo,
+      result.rows[0].descricao,
+      result.rows[0].preco,
+      result.rows[0].estoque,
+      result.rows[0].plataformas,
+      result.rows[0].nota,
+      result.rows[0].categorias,
+      result.rows[0].comentarios,
+      result.rows[0].url_imagem
+    );
+  }
+  
+
   async postNewComentario(jogoId, comentario) {
     try {
       const result = await pool.query(
