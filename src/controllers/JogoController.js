@@ -13,6 +13,15 @@ router.get('/', async (req, res) => {
     }
 });
 
+router.get('/listarProdutosPorEstoque', async (req, res) => {
+    try {
+        const jogos = await jogoService.listarProdutosPorEstoque();
+        res.json(jogos);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
 router.get('/:id', async (req, res) => {
     try {
         const jogoId = req.params.id;

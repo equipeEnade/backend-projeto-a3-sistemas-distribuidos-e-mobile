@@ -99,21 +99,16 @@ async function createTables() {
     console.log("Import de 10 jogos feito com sucesso.");
 
     await pool.query(`
-                INSERT INTO usuarios (nome, email, senha, role)
-                VALUES 
-                  ('Catureba The King', 'catureba@gmail.com', 'adminsenha', 'ADMIN'),
-                  ('Usuário 1', 'usuario1@example.com', 'senha1', 'USER'),
-                  ('Usuário 2', 'usuario2@example.com', 'senha2', 'USER'),
-                  ('Usuário 3', 'usuario3@example.com', 'senha3', 'USER'),
-                  ('Usuário 4', 'usuario4@example.com', 'senha4', 'USER'),
-                  ('Usuário 5', 'usuario5@example.com', 'senha5', 'USER'),
-                  ('Usuário 6', 'usuario6@example.com', 'senha6', 'USER'),
-                  ('Usuário 7', 'usuario7@example.com', 'senha7', 'USER'),
-                  ('Usuário 8', 'usuario8@example.com', 'senha8', 'USER'),
-                  ('Usuário 9', 'usuario9@example.com', 'senha9', 'USER');
-        `);
+    INSERT INTO usuarios (nome, email, senha, role)
+    VALUES 
+        ('Catureba', 'admin@gmail.com', 'adminsenha', 'ADMIN'),
+        ('Diego', 'diego@gmail.com', 'diegosenha', 'USER'),
+        ('Rafael', 'rafael@gmail.com', 'rafaelsenha', 'USER'),
+        ('Matheus lobo', 'matheus@gmail.com', 'matheussenha', 'USER'),
+        ('Amanda', 'amanda@gmail.com', 'amandasenha', 'USER')
+`);
 
-    console.log("Import de 10 usuarios feito com sucesso.");
+    console.log("Import de 5 usuarios feito com sucesso.");
   } catch (err) {
     console.error("Erro ao criar tabelas:", err);
   }

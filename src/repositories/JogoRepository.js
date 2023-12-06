@@ -24,7 +24,26 @@ class JogoRepository {
       throw new Error(`Erro ao buscar jogos: ${error.message}`);
     }
   }
-
+  async listarProdutosPorEstoque() {
+    const { rows } = await pool.query(`
+      SELECT *
+      FROM jogos
+      ORDER BY estoque ASC;
+    `);
+  
+    return rows.map(row => ({
+      id: row.id,
+      titulo: row.titulo,
+      descricao: row.descricao,
+      preco: row.preco,
+      estoque: row.estoque,
+      plataformas: row.plataformas,
+      nota: row.nota,
+      categorias: row.categorias,
+      comentarios: row.comentarios,
+      urlimagem: row.urlimagem
+    }));
+  }
   async getJogoById(id) {
     try {
       const { rows } = await pool.query("SELECT * FROM jogos WHERE id = $1", [
@@ -54,7 +73,6 @@ class JogoRepository {
     const result = await pool.query("DELETE FROM jogos WHERE id = $1", [id]);
     return result.rowCount > 0;
   }
-
   async editarJogo(jogo) {
     const { id, titulo, descricao, preco, estoque, plataformas, nota, categorias, comentarios, urlImagem } = jogo;
     const result = await pool.query(
@@ -74,7 +92,6 @@ class JogoRepository {
       result.rows[0].url_imagem
     );
   }
-  
 
   async postNewComentario(jogoId, comentario) {
     try {

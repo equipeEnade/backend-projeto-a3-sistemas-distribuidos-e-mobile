@@ -14,7 +14,6 @@ class UsuarioRepository {
     const result = await pool.query("DELETE FROM usuarios WHERE id = $1", [id]);
     return result.rowCount > 0;
   }
-
   async cadastrarUsuario(usuario) {
     const { nome, email, senha, role } = usuario;
     const result = await pool.query(
@@ -29,7 +28,6 @@ class UsuarioRepository {
       result.rows[0].role
     );
   }
-
   async editarUsuario(usuario) {
     const { id, nome, email, senha, role } = usuario;
     const result = await pool.query(
@@ -44,7 +42,6 @@ class UsuarioRepository {
       result.rows[0].role
     );
   }
-
   async findUsuarioByID(id) {
     const { rows } = await pool.query("SELECT * FROM usuarios WHERE id = $1", [
       id,

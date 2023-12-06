@@ -12,11 +12,16 @@ class JogoService {
             throw new Error(`Erro ao buscar todos os jogos: ${error.message}`);
         }
     }
-
+    async listarProdutosPorEstoque() {
+        try {
+            return await this.jogoRepository.listarProdutosPorEstoque();
+        } catch (error) {
+            throw new Error(`Erro ao buscar todos os jogos: ${error.message}`);
+        }
+    }
     async put(jogo) {
         return await this.jogoRepository.editarJogo(jogo);
     }
-
     async getJogoById(id) {
         try {
             return await this.jogoRepository.getJogoById(id);
@@ -27,7 +32,6 @@ class JogoService {
     async deletarJogo(id) {
         return await this.jogoRepository.deletarJogo(id);
     }
-
     async getJogosByPlataformas(plataformas) {
         try {
             return await this.jogoRepository.getJogosByPlataformas(plataformas);
@@ -35,7 +39,6 @@ class JogoService {
             throw new Error(`Erro ao buscar jogos por plataformas: ${error.message}`);
         }
     }
-
     async getJogosByCategorias(categoria) {
         try {
             return await this.jogoRepository.getJogosByCategorias(categoria);
@@ -43,7 +46,6 @@ class JogoService {
             throw new Error(`Erro ao buscar jogos por categoria: ${error.message}`);
         }
     }
-
     async postNewComentario(jogoId, comentario) {
         try {
             return await this.jogoRepository.postNewComentario(jogoId, comentario);
@@ -51,7 +53,6 @@ class JogoService {
             throw new Error(`Erro ao adicionar comentário ao jogo: ${error.message}`);
         }
     }
-
     async postNewJogo(jogo) {
         jogo.nota = null
         try {
