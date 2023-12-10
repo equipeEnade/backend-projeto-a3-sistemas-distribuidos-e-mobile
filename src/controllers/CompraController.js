@@ -93,36 +93,10 @@ router.put('/:id', async (req, res) => {
         res.status(500).json({ error: err.message });
     }
 });
-router.get('/:id', async (req, res) => {
-    const id = req.params.id;
-    try {
-        const compra = await compraService.findCompraByID(id);
-        if (compra) {
-            res.json(compra);
-        } else {
-            res.status(404).json({ message: 'Usuário não encontrado' });
-        }
-    } catch (err) {
-        res.status(500).json({ error: err.message });
-    }
-});
 router.get('/usuario/:id', async (req, res) => {
     const id_usuario = req.params.id;
     try {
         const compra = await compraService.findComprasByUsuarioId(id_usuario);
-        if (compra) {
-            res.json(compra);
-        } else {
-            res.status(401).json({ message: 'Nenhuma compra vinculada a este usuario foi encontrada' });
-        }
-    } catch (err) {
-        res.status(500).json({ error: err.message });
-    }
-});
-router.get('/valorMedioPorUsuario/:id', async (req, res) => {
-    const id_usuario = req.params.id;
-    try {
-        const compra = await compraService.findMediaComprasByUsuarioId(id_usuario);
         if (compra) {
             res.json(compra);
         } else {
