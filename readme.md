@@ -163,7 +163,7 @@ Para iniciar o projeto localmente, siga estas etapas:
 - `POST` `localhost:3001/api/usuarios/login`
   - Valida uma tentativa de login.
 
-- `PUT` `localhost:3001/api/usuarios`
+- `PUT` `localhost:3001/api/usuarios/{id_usuario}`
   - Edita um usuário.
 
 - `DELETE` `localhost:3001/api/usuarios/{id_usuario}`
@@ -196,7 +196,7 @@ Para iniciar o projeto localmente, siga estas etapas:
 - `GET` `localhost:3001/api/compras`
   - Lista todas as compras.
 
-- `GET` `localhost:3001/api/compras/{id}`
+- `GET` `localhost:3001/api/compras/{id_compra}`
   - Procura uma compra por ID.
 
 - `GET` `localhost:3001/api/compras/getInfoGastosUsuario/{id_usuario}`
@@ -211,7 +211,7 @@ Para iniciar o projeto localmente, siga estas etapas:
 - `POST` `localhost:3001/api/compras`
   - Cadastra a compra de um produto vinculada a um usuário.
 
-- `PUT` `localhost:3001/api/compras`
+- `PUT` `localhost:3001/api/compras/{id_compra}`
   - Edita uma compra.
 
 - `DELETE` `localhost:3001/api/compras/{id_compra}`
